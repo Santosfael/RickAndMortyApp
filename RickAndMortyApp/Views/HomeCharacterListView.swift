@@ -10,6 +10,10 @@ import SwiftUI
 struct HomeCharacterListView: View {
     @StateObject private var viewModel = CharacterListViewModel()
     
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -18,7 +22,7 @@ struct HomeCharacterListView: View {
                         .foregroundColor(.gray)
                 } else {
                     ScrollView {
-                        LazyVStack {
+                        LazyVGrid(columns: columns) {
                             ForEach(viewModel.characters) { character in
                                 CharacterRowView(character: character)
                                     .onAppear {

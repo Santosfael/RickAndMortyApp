@@ -40,7 +40,7 @@ struct CharacterRowView: View {
         .background(Color.white)
         .cornerRadius(10)
         .shadow(radius: 5)
-        .frame(maxWidth: 150)
+        .frame(maxWidth: 150, minHeight: 200)
     }
     
     private func statusColor(for status: String) -> Color {

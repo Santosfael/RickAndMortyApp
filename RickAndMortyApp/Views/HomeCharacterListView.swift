@@ -8,15 +8,61 @@
 import SwiftUI
 
 struct HomeCharacterListView: View {
+    @StateObject private var viewModel = CharacterListViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ZStack {
+                if viewModel.characters.isEmpty && !viewModel.isLoading {
+                    Text("No characters found")
+                        .foregroundColor(.gray)
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.characters) { character in
+                                CharacterRowView(character: character)
+                                    .onAppear {
+                                        if character.id == viewModel.characters.last?.id {
+                                            Task {
+                                                await viewModel.loadModeCharacters()
+                                            }
+                                        }
+                                    }
+                            }
+                            
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .padding()
+                            }
+                        }
+                    }
+                    .refreshable {
+                        await viewModel.refreshCharacters()
+                    }
+                }
+                
+                if viewModel.isLoading && viewModel.characters.isEmpty {
+                    ProgressView("Loading...")
+                        .scaleEffect(1.5)
+                }
+            }
+            .navigationTitle("Rick & Morty")
+            .alert(item: Binding<AlertItem?>(
+                get: { viewModel.errorMessage != nil ? AlertItem(message: viewModel.errorMessage!) : nil },
+                set: { _ in viewModel.errorMessage = nil }
+            )) { alertItem in
+                Alert(title: Text("Error"), message: Text(alertItem.message), dismissButton: .default(Text("OK")))
+            }
+            .task {
+                await viewModel.fetchCharacters()
+            }
         }
-        .padding()
     }
+}
+
+struct AlertItem: Identifiable {
+    let id = UUID()
+    let message: String
 }
 
 #Preview {

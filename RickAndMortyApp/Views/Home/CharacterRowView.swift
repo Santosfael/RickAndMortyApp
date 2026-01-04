@@ -25,12 +25,14 @@ struct CharacterRowView: View {
             
             Text(character.name)
                 .font(.headline)
+                .foregroundStyle(.black)
             HStack {
                 Circle()
                     .fill(statusColor(for: character.status))
                     .frame(width: 10, height: 10)
                 Text(character.status)
                     .font(.subheadline)
+                    .foregroundStyle(.black)
             }
             Text(character.species)
                 .font(.subheadline)

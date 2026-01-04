@@ -24,14 +24,18 @@ struct HomeCharacterListView: View {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             ForEach(viewModel.characters) { character in
-                                CharacterRowView(character: character)
-                                    .onAppear {
-                                        if character.id == viewModel.characters.last?.id {
-                                            Task {
-                                                await viewModel.loadModeCharacters()
+                                
+                                
+                                NavigationLink(destination: DetailCharacterView(viewModel: CharacterDetailViewModel(character: character))) {
+                                    CharacterRowView(character: character)
+                                        .onAppear {
+                                            if character.id == viewModel.characters.last?.id {
+                                                Task {
+                                                    await viewModel.loadModeCharacters()
+                                                }
                                             }
                                         }
-                                    }
+                                }
                             }
                             
                             if viewModel.isLoading {

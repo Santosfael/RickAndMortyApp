@@ -16,6 +16,45 @@ O código-fonte está organizado nas seguintes pastas:
 -   `Services/`: Contém a lógica para se comunicar com a API externa (`CharacterService`), buscar e decodificar os dados dos personagens.
 -   `Utilities/`: Inclui tipos de suporte, como `NetworkError` para tratamento de erros de rede.
 
+## Estrutura de Pastas
+```bash
+RickAndMortyApp
+├── README.md
+├── RickAndMortyApp
+│   ├── App
+│   │   └── RickAndMortyAppApp.swift
+│   ├── Assets.xcassets
+│   ├── Components
+│   │   └── CharacterDetailItemView.swift
+│   ├── Models
+│   │   ├── Character.swift
+│   │   └── CharacterResponse.swift
+│   ├── Resources
+│   ├── Services
+│   │   └── CharacterService.swift
+│   ├── Utilities
+│   │   └── NetworkError.swift
+│   ├── ViewModels
+│   │   ├── CharacterDetailViewModel.swift
+│   │   └── CharacterListViewModel.swift
+│   └── Views
+│       ├── CharacterDetail
+│       │   └── DetailCharacterView.swift
+│       └── Home
+│           ├── CharacterRowView.swift
+│           └── HomeCharacterListView.swift
+├── RickAndMortyApp.xcodeproj
+└── RickAndMortyAppTests
+    ├── Mocks
+    │   └── Services
+    │       ├── MockCharacterService.swift
+    │       ├── MockCharacterServiceDelayed.swift
+    │       ├── MockCharacterServiceFailure.swift
+    │       └── MockCharacterServicePagination.swift
+    ├── RickAndMortyAppTests.swift
+    └── ViewModels
+        └── CharacterListViewModelTests.swift
+```
 ## Funcionalidades
 
 -   Exibição de uma lista de personagens de Rick and Morty.

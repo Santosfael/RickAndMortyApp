@@ -19,12 +19,18 @@ final class CharacterListViewModel: ObservableObject {
     
     private var isLoadingMore = false
     
+    var characterService: CharacterServiceProtocol
+    
+    init(characterService: CharacterServiceProtocol) {
+        self.characterService = characterService
+    }
+    
     internal func fetchCharacters() async {
         isLoading = true
         errorMessage = nil
         
         do {
-            let response = try await CharacterService.shared.fetchCharacters(page: 1)
+            let response = try await characterService.fetchCharacters(page: 1)
             characters = response.results
             currentPage = 1
             hasMorePages = response.info.next != nil
@@ -38,7 +44,7 @@ final class CharacterListViewModel: ObservableObject {
         guard hasMorePages, !isLoadingMore else { return }
         isLoadingMore = true
         do {
-            let response = try await CharacterService.shared.fetchCharacters(page: currentPage + 1)
+            let response = try await characterService.fetchCharacters(page: currentPage + 1)
             characters.append(contentsOf: response.results)
             currentPage += 1
             hasMorePages = response.info.next != nil

@@ -12,7 +12,7 @@ protocol CharacterServiceProtocol {
 }
 
 class CharacterService: CharacterServiceProtocol {
-    static let shared = CharacterService()
+    //static let shared = CharacterService()
 
     private let baseURL = "https://rickandmortyapi.com/api/character"
     func fetchCharacters(page: Int) async throws -> CharacterResponse {

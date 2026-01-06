@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct HomeCharacterListView: View {
-    @StateObject var viewModel: CharacterListViewModel
+    @StateObject private var viewModel: CharacterListViewModel
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
+    
+    init(viewModel: CharacterListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         NavigationView {

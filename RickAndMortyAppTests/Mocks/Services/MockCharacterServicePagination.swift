@@ -7,7 +7,7 @@
 
 @testable import RickAndMortyApp
 
-final class MockCharacterServicePagination: CharacterServiceProtocol {
+final class MockCharacterServicePagination: APIServiceProtocol {
     func fetchCharacters(page: Int) async throws -> RickAndMortyApp.CharacterResponse {
         switch page {
         case 2:
@@ -57,5 +57,13 @@ final class MockCharacterServicePagination: CharacterServiceProtocol {
                                                   previous: "",),
                                      results: [])
         }
+    }
+
+    func fetchLocations(page: Int) async throws -> RickAndMortyApp.LocationResponse {
+        return LocationResponse(info: Info(count: 0, pages: 0, next: "", previous: ""), results: [])
+    }
+
+    func fetchEpisodes(page: Int) async throws -> RickAndMortyApp.EpisodeResponse {
+        return EpisodeResponse(info: Info(count: 0, pages: 0, next: "", previous: ""), results: [])
     }
 }

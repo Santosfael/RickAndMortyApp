@@ -78,5 +78,5 @@ struct AlertItem: Identifiable {
 }
 
 #Preview {
-    HomeCharacterListView(viewModel: HomeCharacterListViewModel(characterService: CharacterService()))
+    HomeCharacterListView(viewModel: HomeCharacterListViewModel(apiService: APIService()))
 }

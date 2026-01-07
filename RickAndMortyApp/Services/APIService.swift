@@ -13,7 +13,7 @@ protocol APIServiceProtocol {
     func fetchEpisodes(page: Int) async throws -> EpisodeResponse
 }
 
-class APIService: APIServiceProtocol {
+final class APIService: APIServiceProtocol {
     private let baseURL = ConfigManager.baseURL
 
     init(){}

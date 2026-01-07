@@ -12,7 +12,7 @@ struct RickAndMortyAppApp: App {
     var body: some Scene {
         WindowGroup {
             let characterService = CharacterService()
-            let viewModel = CharacterListViewModel(characterService: characterService)
+            let viewModel = HomeCharacterListViewModel(characterService: characterService)
             HomeCharacterListView(viewModel: viewModel)
         }
     }

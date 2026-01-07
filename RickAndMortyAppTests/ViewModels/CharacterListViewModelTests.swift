@@ -20,7 +20,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadCharactersSuccessShouldPopulateCharacters() async {
         let service = MockCharacterService()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         await viewModel.fetchCharacters()
         
         XCTAssertEqual(viewModel.characters.count, 1)
@@ -31,7 +31,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadCharactersSuccessShouldSetErroMessage() async {
         let service = MockCharacterServiceFailure()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         
         await viewModel.fetchCharacters()
         
@@ -43,7 +43,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadCharactersSuccessShouldToggleLoadingState() async {
         let service = MockCharacterServiceDelayed()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         
         let task = Task {
             await viewModel.fetchCharacters()
@@ -60,7 +60,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadMoreCharactersShouldAppendNewPage() async {
         let service = MockCharacterServicePagination()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         
         viewModel.characters = [
             Character(id: 362,
@@ -90,7 +90,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadMoreCharactersShouldNotLoadWhenNotMorePage() async {
         let service = MockCharacterServicePagination()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         
         viewModel.hasMorePages = false
         viewModel.characters = [
@@ -120,7 +120,7 @@ final class CharacterListViewModelTests: XCTestCase {
     @MainActor
     func testLoadMoreCharactersShouldSetErrorMessage() async {
         let service = MockCharacterServiceFailure()
-        let viewModel = CharacterListViewModel(characterService: service)
+        let viewModel = HomeCharacterListViewModel(characterService: service)
         
         viewModel.hasMorePages = true
         await viewModel.loadModeCharacters()

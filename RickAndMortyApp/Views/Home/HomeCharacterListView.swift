@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct HomeCharacterListView: View {
-    @StateObject private var viewModel: CharacterListViewModel
+    @StateObject private var viewModel: HomeCharacterListViewModel
     
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
     
-    init(viewModel: CharacterListViewModel) {
+    init(viewModel: HomeCharacterListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
@@ -78,5 +78,5 @@ struct AlertItem: Identifiable {
 }
 
 #Preview {
-    HomeCharacterListView(viewModel: CharacterListViewModel(characterService: CharacterService()))
+    HomeCharacterListView(viewModel: HomeCharacterListViewModel(characterService: CharacterService()))
 }

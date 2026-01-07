@@ -1,5 +1,5 @@
 //
-//  CharacterListViewModel.swift
+//  HomeCharacterListViewModel.swift
 //  RickAndMortyApp
 //
 //  Created by Rafael on 03/01/26.
@@ -9,7 +9,7 @@ import Foundation
 internal import Combine
 
 @MainActor
-final class CharacterListViewModel: ObservableObject {
+final class HomeCharacterListViewModel: ObservableObject {
     
     @Published var characters: [Character] = []
     @Published var isLoading = false

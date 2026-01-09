@@ -10,50 +10,33 @@ O objetivo deste projeto é demonstrar uma arquitetura limpa e moderna para dese
 
 O código-fonte está organizado nas seguintes pastas:
 
--   `Models/`: Contém as estruturas de dados (`Character`, `CharacterResponse`) que mapeiam a resposta da API.
--   `Views/`: Contém as views SwiftUI responsáveis pela interface do usuário (`HomeCharacterListView`, `CharacterRowView`).
--   `ViewModels/`: Contém a lógica de apresentação e o estado da view (`CharacterListViewModel`), que atua como uma ponte entre os Models e as Views.
--   `Services/`: Contém a lógica para se comunicar com a API externa (`CharacterService`), buscar e decodificar os dados dos personagens.
--   `Utilities/`: Inclui tipos de suporte, como `NetworkError` para tratamento de erros de rede.
-
-## Estrutura de Pastas
+### Estrutura de Pastas
 ```bash
 RickAndMortyApp
 ├── README.md
 ├── RickAndMortyApp
 │   ├── App
-│   │   └── RickAndMortyAppApp.swift
 │   ├── Assets.xcassets
 │   ├── Components
-│   │   └── CharacterDetailItemView.swift
 │   ├── Models
-│   │   ├── Character.swift
-│   │   └── CharacterResponse.swift
+│   │   ├── Character
+│   │   ├── Episode
+│   │   └── Location
 │   ├── Resources
 │   ├── Services
-│   │   └── CharacterService.swift
 │   ├── Utilities
-│   │   └── NetworkError.swift
 │   ├── ViewModels
-│   │   ├── CharacterDetailViewModel.swift
-│   │   └── CharacterListViewModel.swift
+│   │   ├── Episode
+│   │   ├── Home
+│   │   └── Location
 │   └── Views
 │       ├── CharacterDetail
-│       │   └── DetailCharacterView.swift
 │       └── Home
-│           ├── CharacterRowView.swift
-│           └── HomeCharacterListView.swift
 ├── RickAndMortyApp.xcodeproj
 └── RickAndMortyAppTests
     ├── Mocks
     │   └── Services
-    │       ├── MockCharacterService.swift
-    │       ├── MockCharacterServiceDelayed.swift
-    │       ├── MockCharacterServiceFailure.swift
-    │       └── MockCharacterServicePagination.swift
-    ├── RickAndMortyAppTests.swift
     └── ViewModels
-        └── CharacterListViewModelTests.swift
 ```
 ## Funcionalidades
 

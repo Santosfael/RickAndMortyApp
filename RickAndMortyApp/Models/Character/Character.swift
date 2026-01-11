@@ -15,7 +15,7 @@ struct Character: Codable, Identifiable {
     let type: String
     let gender: String
     let origin: Origin
-    let location: Location
+    let location: LocationPerson
     let image: String
     let episode: [String]
     let url: String
@@ -27,7 +27,7 @@ struct Origin: Codable {
     let url: String
 }
 
-struct Location: Codable {
+struct LocationPerson: Codable {
     let name: String
     let url: String
 }

@@ -9,7 +9,7 @@ import Foundation
 
 // Codable - Converter Json para objetos em Swift
 // Identifiable - Identificador para uso em listas no SwiftUI
-struct LocationModel: Codable, Identifiable {
+struct Location: Codable, Identifiable {
     let id: Int
     let name: String
     let type: String

@@ -9,5 +9,5 @@ import Foundation
 
 struct LocationResponse: Codable {
     let info: Info
-    let results: [LocationModel]
+    let results: [Location]
 }

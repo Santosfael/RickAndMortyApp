@@ -15,7 +15,7 @@ final class LocationListViewModel: ObservableObject {
 
     // @Published: quando a propriedade muda, notifica automaticamente as Views
     // As Views que observam esse ViewModel serão re-renderizadas
-    @Published var locations: [LocationModel] = []
+    @Published var locations: [Location] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var currentPage = 1

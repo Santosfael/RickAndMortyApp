@@ -66,7 +66,7 @@ struct CharacterRowView: View {
                                           gender: "Male",
                                           origin: Origin(name: "Alien Spa",
                                                          url: "https://rickandmortyapi.com/api/location/64"),
-                                          location: Location(name: "Earth",
+                                          location: LocationPerson(name: "Earth",
                                                              url: "https://rickandmortyapi.com/api/location/20"),
                                           image: "https://rickandmortyapi.com/api/character/avatar/361.jpeg",
                                           episode: ["https://rickandmortyapi.com/api/episode/27"],

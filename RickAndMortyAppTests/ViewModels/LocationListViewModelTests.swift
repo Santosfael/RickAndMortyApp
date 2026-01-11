@@ -56,7 +56,7 @@ final class LocationListViewModelTests: XCTestCase {
         let viewModel = LocationListViewModel(apiService: service)
         
         viewModel.locations = [
-            LocationModel(
+            Location(
                 id: 1,
                 name: "Earth",
                 type: "Planet",
@@ -85,7 +85,7 @@ final class LocationListViewModelTests: XCTestCase {
         
         viewModel.hasMorePages = false
         viewModel.locations = [
-            LocationModel(
+            Location(
                 id: 1,
                 name: "Earth",
                 type: "Planet",

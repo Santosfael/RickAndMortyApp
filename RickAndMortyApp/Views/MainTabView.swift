@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct MainTabView: View {
+    
+    private let factory: ViewModelFactory
+
+    init(factory: ViewModelFactory = DefaultVieModelFactory()) {
+        self.factory = factory
+    }
     var body: some View {
         TabView {
-            HomeCharacterListView(viewModel: HomeCharacterListViewModel(apiService: APIService()))
+            HomeCharacterListView(viewModel: factory.makeCharacterListViewModel())
                 .tabItem {
                     Label("Character", systemImage: "person.3.fill")
                 }
                 .tag(0)
             
-            LocationListView(viewModel: LocationListViewModel(apiService: APIService()))
+            LocationListView(viewModel: factory.makeLocationListViewModel())
                 .tabItem {
                     Label("Locations", systemImage: "globe")
                 }
                 .tag(1)
             
-            EpisodeListView(viewModel: EpisodeListViewModel(apiService: APIService()))
+            EpisodeListView(viewModel: factory.makeEpisodeListViewModel())
                 .tabItem {
                     Label("Episodes", systemImage: "tv.fill")
                 }

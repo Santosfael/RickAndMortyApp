@@ -11,9 +11,7 @@ import SwiftUI
 struct RickAndMortyAppApp: App {
     var body: some Scene {
         WindowGroup {
-            let ApiService = APIService()
-            let viewModel = HomeCharacterListViewModel(apiService: ApiService)
-            HomeCharacterListView(viewModel: viewModel)
+            MainTabView()
         }
     }
 }

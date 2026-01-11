@@ -9,9 +9,7 @@ import Foundation
 
 struct ConfigManager {
     static var baseURL: String {
-        guard let url = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
-            return "https://rickandmortyapi.com/api"
-        }
+        let url = ProcessInfo.processInfo.environment["BASE_URL"] ?? "https://rickandmortyapi.com/api"
         
         return url
     }

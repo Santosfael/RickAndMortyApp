@@ -14,16 +14,25 @@ protocol APIServiceProtocol {
 }
 
 final class APIService: APIServiceProtocol {
-    private let baseURL = ConfigManager.baseURL
 
-    init(){}
+    private let urlSession: URLSession
+    private let baseURL: String
+    
+    init(urlSession: URLSession = .shared, baseURL: String = ConfigManager.baseURL) {
+        self.urlSession = urlSession
+        self.baseURL = baseURL
+    }
 
     func fetchCharacters(page: Int) async throws -> CharacterResponse {
+        guard !baseURL.isEmpty else {
+           throw NetworkError.invalidURL
+        }
+        
         guard let url = URL(string: "\(baseURL)/character?page=\(page)") else {
             throw NetworkError.invalidURL
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw NetworkError.requestFailed
@@ -38,11 +47,15 @@ final class APIService: APIServiceProtocol {
     }
     
     func fetchLocations(page: Int) async throws -> LocationResponse {
+        guard !baseURL.isEmpty else {
+           throw NetworkError.invalidURL
+        }
+        
         guard let url = URL(string: "\(baseURL)/location?page=\(page)") else {
             throw NetworkError.invalidURL
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw NetworkError.requestFailed
@@ -57,11 +70,15 @@ final class APIService: APIServiceProtocol {
     }
     
     func fetchEpisodes(page: Int) async throws -> EpisodeResponse {
+        guard !baseURL.isEmpty else {
+           throw NetworkError.invalidURL
+        }
+        
         guard let url = URL(string: "\(baseURL)/episode?page\(page)") else {
             throw NetworkError.invalidURL
         }
         
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await urlSession.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw NetworkError.requestFailed

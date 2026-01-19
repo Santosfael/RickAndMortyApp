@@ -43,6 +43,8 @@ struct CharacterRowView: View {
         .cornerRadius(10)
         .shadow(radius: 5)
         .frame(maxWidth: 150, minHeight: 200)
+        .accessibilityIdentifier("characterCell_\(character.id)")
+        .accessibilityLabel("Character: \(character.name)")
     }
     
     private func statusColor(for status: String) -> Color {

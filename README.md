@@ -33,15 +33,18 @@ RickAndMortyApp
 │       ├── CharacterDetail
 │       └── Home
 ├── RickAndMortyApp.xcodeproj
-└── RickAndMortyAppTests
-    ├── Integration
-    ├── Mocks
-    │   ├── Helpers
-    │   ├── Services
-    │   ├── TestData.swift
-    │   └── URLProtocol
-    ├── Service
-    └── ViewModels
+├── RickAndMortyAppTests
+│   ├── Integration
+│   ├── Mocks
+│   │   ├── Helpers
+│   │   ├── Services
+│   │   ├── TestData.swift
+│   │   └── URLProtocol
+│   ├── Service
+│   └── ViewModels
+└── RickAndMortyAppUITests
+    ├── PageObjects
+    └── RickAndMortyAppUITests..swift
 ```
 ## Funcionalidades
 

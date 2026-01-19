@@ -21,18 +21,21 @@ struct MainTabView: View {
                     Label("Character", systemImage: "person.3.fill")
                 }
                 .tag(0)
+                .accessibilityIdentifier("characterTab")
             
             LocationListView(viewModel: factory.makeLocationListViewModel())
                 .tabItem {
                     Label("Locations", systemImage: "globe")
                 }
                 .tag(1)
+                .accessibilityIdentifier("locationTab")
             
             EpisodeListView(viewModel: factory.makeEpisodeListViewModel())
                 .tabItem {
                     Label("Episodes", systemImage: "tv.fill")
                 }
                 .tag(2)
+                .accessibilityIdentifier("episdeTab")
          }
         .accentColor(.blue)
     }
